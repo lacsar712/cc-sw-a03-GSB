@@ -34,6 +34,7 @@ services:
     command: ["python", "worker.py"]
     environment:
       DATABASE_URL: postgresql://app:app@db:5432/spectrum
+      WORKER_INTERVAL: "5"
     depends_on:
       db:
         condition: service_healthy

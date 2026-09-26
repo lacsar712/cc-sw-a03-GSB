@@ -36,6 +36,7 @@ watch(() => route.params.id, load)
       <p>状态：{{ job.status }}</p>
       <p>结论：{{ job.verdict }}</p>
       <p>理由：{{ job.reason }}</p>
+      <p v-if="job.closed_at">结案时间：{{ new Date(job.closed_at).toLocaleString('zh-CN', { hour12: false }) }}</p>
     </section>
   </div>
 </template>
