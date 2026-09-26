@@ -10,6 +10,11 @@ export async function api(path, opts = {}) {
   } catch {
     data = { detail: t }
   }
-  if (!r.ok) throw new Error(data.detail || data.message || r.statusText)
+  if (!r.ok) {
+    const err = new Error(data.detail || data.message || r.statusText)
+    err.status = r.status
+    err.data = data
+    throw err
+  }
   return data
 }
